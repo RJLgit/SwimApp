@@ -7,18 +7,28 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class PagerAdapter extends FragmentPagerAdapter {
 
-    public PagerAdapter(@NonNull FragmentManager fm, int behavior) {
+    private int numOfTabs;
+
+    public PagerAdapter(@NonNull FragmentManager fm, int behavior, int numOfTabs) {
         super(fm, behavior);
+        this.numOfTabs = numOfTabs;
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return null;
+        switch (position) {
+            case 0:
+                return new FindFragment();
+            case 1:
+                return new ShareFragment();
+            default:
+                return null;
+        }
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return numOfTabs;
     }
 }
