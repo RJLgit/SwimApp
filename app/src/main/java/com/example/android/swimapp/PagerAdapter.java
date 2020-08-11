@@ -4,19 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class PagerAdapter extends FragmentPagerAdapter {
+public class PagerAdapter extends FragmentStateAdapter {
 
     private int numOfTabs;
 
-    public PagerAdapter(@NonNull FragmentManager fm, int behavior, int numOfTabs) {
-        super(fm, behavior);
+    public PagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, int numOfTabs) {
+        super(fragmentManager, lifecycle);
         this.numOfTabs = numOfTabs;
     }
 
     @NonNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
         switch (position) {
             case 0:
                 return new FindFragment();
@@ -28,7 +30,11 @@ public class PagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return numOfTabs;
     }
+
+
+
+
 }

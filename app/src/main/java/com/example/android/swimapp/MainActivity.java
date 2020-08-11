@@ -19,5 +19,7 @@ public class MainActivity extends AppCompatActivity {
         TabItem findSessions = findViewById(R.id.findSessionTab);
         TabItem shareSessions = findViewById(R.id.shareSessionTab);
         ViewPager2 viewPager2 = findViewById(R.id.myViewPager);
+
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle(), 2);
     }
 }
