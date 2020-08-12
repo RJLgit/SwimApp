@@ -10,14 +10,26 @@
     android:layout_height="match_parent"
     tools:context=".ShareFragment">
 
+    <Button
+        android:id="@+id/addSessionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Add Session"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <!-- TODO: Update blank fragment layout -->
     <FrameLayout
+        android:id="@+id/firstSetContainer"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:id="@+id/firstSetContainer"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/addSessionButton">
+
+
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -25,6 +37,7 @@
         android:id="@+id/secondSetContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/firstSetContainer"
+        android:visibility="gone"
         />
     <FrameLayout
         android:layout_width="match_parent"
@@ -32,6 +45,7 @@
         android:id="@+id/thirdSetContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/secondSetContainer"
+        android:visibility="gone"
         />
     <FrameLayout
         android:layout_width="match_parent"
@@ -39,17 +53,8 @@
         android:id="@+id/fourthSetContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/thirdSetContainer"
+        android:visibility="gone"
         />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Add Session"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fourthSetContainer"
-        android:id="@+id/addSessionButton"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
