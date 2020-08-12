@@ -1,5 +1,6 @@
 package com.example.android.swimapp;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,12 +14,15 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 public class PagerAdapter extends FragmentStateAdapter {
 
     private int numOfTabs;
+    private Context context;
     private static final String TAG = "PagerAdapter";
     private String[] tabTitles = new String[]{"Find Session", "Share Session"};
+    private ShareFragment shareFragment;
 
-    public PagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, int numOfTabs) {
+    public PagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, int numOfTabs, Context context) {
         super(fragmentManager, lifecycle);
         this.numOfTabs = numOfTabs;
+        this.context = context;
     }
 
 
@@ -32,7 +36,9 @@ public class PagerAdapter extends FragmentStateAdapter {
                 return new FindFragment();
             case 1:
                 Log.d(TAG, "createFragment: 1");
-                return new ShareFragment();
+                shareFragment = new ShareFragment();
+                shareFragment.setNewSetListener((ShareFragment.NewSetListener) context);
+                return shareFragment;
             default:
                 return null;
         }
@@ -44,6 +50,8 @@ public class PagerAdapter extends FragmentStateAdapter {
     }
 
 
-
-
+    public void setEntered(int num) {
+        Log.d(TAG, "setEntered: ");
+        shareFragment.setEntered();
+    }
 }

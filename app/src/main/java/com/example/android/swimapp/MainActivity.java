@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ShareFragment.NewSetListener {
+    private static final String TAG = "MainActivity";
+    PagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         TabItem findSessions = findViewById(R.id.findSessionTab);
         TabItem shareSessions = findViewById(R.id.shareSessionTab);
         ViewPager2 viewPager2 = findViewById(R.id.myViewPager);
-        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle(), tabLayout.getTabCount());
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle(), tabLayout.getTabCount(), this);
         viewPager2.setAdapter(pagerAdapter);
 
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2,
@@ -36,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(0).setText("Find Sessions");
         tabLayout.getTabAt(1).setText("Share Sessions");
 
+    }
 
+    @Override
+    public void onNewSetClicked(int num) {
+        Log.d(TAG, "onNewSetClicked: ");
+        pagerAdapter.setEntered(num);
     }
 }
