@@ -10,15 +10,19 @@ import android.util.Log;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements ShareFragment.NewSetListener {
     private static final String TAG = "MainActivity";
     PagerAdapter pagerAdapter;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
 
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         TabItem findSessions = findViewById(R.id.findSessionTab);
