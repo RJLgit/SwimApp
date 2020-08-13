@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "211350287882",
+    "firebase_url": "https://swimapp-f158c.firebaseio.com",
+    "project_id": "swimapp-f158c",
+    "storage_bucket": "swimapp-f158c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211350287882:android:9c8102f705825ff59f51f3",
+        "android_client_info": {
+          "package_name": "com.example.android.swimapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211350287882-u9fmg27ih1mfvsk26vdjcn7ktb3nhbtr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.swimapp",
+            "certificate_hash": "5692d60b502acf70cfeae9034aa3326e768bb12e"
+          }
+        },
+        {
+          "client_id": "211350287882-v9plui1t52flisjjv1ghkbij5i6gtr9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDmovsHO4XCSVuSeWtK0aAEG6-lKi_3H0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211350287882-v9plui1t52flisjjv1ghkbij5i6gtr9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
