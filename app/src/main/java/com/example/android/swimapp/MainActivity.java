@@ -3,6 +3,7 @@ package com.example.android.swimapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -28,11 +29,17 @@ public class MainActivity extends AppCompatActivity implements ShareFragment.New
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private FirebaseAuth.AuthStateListener mListener;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -85,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements ShareFragment.New
     }
 
     private void updateActionBar() {
-
+        toolbar.setSubtitle("Signed in as: " + user.getDisplayName());
     }
 
     @Override
@@ -104,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements ShareFragment.New
                 // Successfully signed in
                 user = FirebaseAuth.getInstance().getCurrentUser();
                 Toast.makeText(MainActivity.this, "Welcome, you are logged in " + user.getDisplayName(), Toast.LENGTH_LONG).show();
+                toolbar.setSubtitle(user.getDisplayName());
 
                 // ...
             } else {
@@ -117,6 +125,8 @@ public class MainActivity extends AppCompatActivity implements ShareFragment.New
         }
 
     }
+
+
 
     @Override
     protected void onPause() {
