@@ -80,7 +80,7 @@ public class ShareFragment extends Fragment {
                 if (setFragment4.getVisible()) {
                     set4 = setFragment4.getTheSet();
                 }
-
+                myActivity.addSession(set1, set2, set3, set4);
                 Log.d(TAG, "onClick: " + set1 + ".." + set2 + ".." + set3 + ".." + set4);
             }
         });
