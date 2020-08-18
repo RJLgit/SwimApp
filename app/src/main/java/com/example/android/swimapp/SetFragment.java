@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,24 @@ public class SetFragment extends Fragment {
     private ShareFragment.NewSetListener newSetListener;
     private int numberOfPanelsShown = 1;
     private static final String TAG = "SetFragment";
+    Boolean isVisible = false;
+    String theSet = "";
+
+    public Boolean getVisible() {
+        return isVisible;
+    }
+
+    public void setVisible(Boolean visible) {
+        isVisible = visible;
+    }
+
+    public String getTheSet() {
+        return theSet;
+    }
+
+    public void setTheSet(String theSet) {
+        this.theSet = theSet;
+    }
 
     public SetFragment() {
         // Required empty public constructor
@@ -49,9 +69,26 @@ public class SetFragment extends Fragment {
                 enterSetEditText.setVisibility(View.VISIBLE);
                 newSetListener.onNewSetClicked(numberOfPanelsShown);
                 numberOfPanelsShown++;
+                isVisible = true;
             }
         });
 
+        enterSetEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                theSet = editable.toString();
+            }
+        });
 
         return view;
     }

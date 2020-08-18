@@ -27,6 +27,7 @@ public class ShareFragment extends Fragment {
     SetFragment setFragment4;
 
 
+
     public ShareFragment() {
         // Required empty public constructor
     }
@@ -50,14 +51,36 @@ public class ShareFragment extends Fragment {
         setFragment2 = new SetFragment();
         setFragment3 = new SetFragment();
         setFragment4 = new SetFragment();
+
+
+
         setFragment.setNewSetListener(newSetListener);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .add(R.id.firstSetContainer, setFragment).commit();
+
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Button clicked", Toast.LENGTH_SHORT).show();
+                String set1 = "";
+                String set2 = "";
+                String set3 = "";
+                String set4 = "";
+                if (setFragment.getVisible()) {
+                    set1 = setFragment.getTheSet();
+                }
+                if (setFragment2.getVisible()) {
+                    set2 = setFragment2.getTheSet();
+                }
+                if (setFragment3.getVisible()) {
+                    set3 = setFragment3.getTheSet();
+                }
+                if (setFragment4.getVisible()) {
+                    set4 = setFragment4.getTheSet();
+                }
+                Log.d(TAG, "onClick: " + set1 + ".." + set2 + ".." + set3 + ".." + set4);
             }
         });
 
