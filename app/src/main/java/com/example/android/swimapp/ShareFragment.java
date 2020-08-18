@@ -26,7 +26,7 @@ public class ShareFragment extends Fragment {
     SetFragment setFragment3;
     SetFragment setFragment4;
 
-
+    FirebaseInterface myActivity;
 
     public ShareFragment() {
         // Required empty public constructor
@@ -45,7 +45,7 @@ public class ShareFragment extends Fragment {
         fourthContainer = view.findViewById(R.id.fourthSetContainer);
         submitButton = view.findViewById(R.id.addSessionButton);
 
-
+        myActivity = (FirebaseInterface) getActivity();
 
         setFragment = new SetFragment();
         setFragment2 = new SetFragment();
@@ -80,6 +80,7 @@ public class ShareFragment extends Fragment {
                 if (setFragment4.getVisible()) {
                     set4 = setFragment4.getTheSet();
                 }
+
                 Log.d(TAG, "onClick: " + set1 + ".." + set2 + ".." + set3 + ".." + set4);
             }
         });
@@ -129,5 +130,9 @@ public class ShareFragment extends Fragment {
 
     public interface NewSetListener {
         public void onNewSetClicked(int num);
+    }
+
+    public interface FirebaseInterface {
+        public void addSession(String set1, String set2, String set3, String set4);
     }
 }

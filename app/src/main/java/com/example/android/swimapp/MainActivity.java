@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ShareFragment.NewSetListener {
+public class MainActivity extends AppCompatActivity implements ShareFragment.NewSetListener, ShareFragment.FirebaseInterface {
     private static final String TAG = "MainActivity";
     private static final int RC_SIGN_IN = 11;
     PagerAdapter pagerAdapter;
@@ -165,5 +165,10 @@ public class MainActivity extends AppCompatActivity implements ShareFragment.New
     protected void onResume() {
         super.onResume();
         mAuth.addAuthStateListener(mListener);
+    }
+
+    @Override
+    public void addSession(String set1, String set2, String set3, String set4) {
+        
     }
 }
