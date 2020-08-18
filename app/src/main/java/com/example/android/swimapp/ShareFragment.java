@@ -21,6 +21,10 @@ public class ShareFragment extends Fragment {
     FrameLayout thirdContainer;
     FrameLayout fourthContainer;
     Button submitButton;
+    SetFragment setFragment;
+    SetFragment setFragment2;
+    SetFragment setFragment3;
+    SetFragment setFragment4;
 
 
     public ShareFragment() {
@@ -40,19 +44,22 @@ public class ShareFragment extends Fragment {
         fourthContainer = view.findViewById(R.id.fourthSetContainer);
         submitButton = view.findViewById(R.id.addSessionButton);
 
+
+
+        setFragment = new SetFragment();
+        setFragment2 = new SetFragment();
+        setFragment3 = new SetFragment();
+        setFragment4 = new SetFragment();
+        setFragment.setNewSetListener(newSetListener);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .add(R.id.firstSetContainer, setFragment).commit();
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Button clicked", Toast.LENGTH_SHORT).show();
             }
         });
-
-        SetFragment setFragment = new SetFragment();
-        setFragment.setNewSetListener(newSetListener);
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .add(R.id.firstSetContainer, setFragment).commit();
-
-
 
         return view;
     }
@@ -71,26 +78,23 @@ public class ShareFragment extends Fragment {
             case 1:
                 Log.d(TAG, "setEntered: case 1");
                 secondContainer.setVisibility(View.VISIBLE);
-                SetFragment setFragment = new SetFragment();
-                setFragment.setNewSetListener(newSetListener);
+                setFragment2.setNewSetListener(newSetListener);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(R.id.secondSetContainer, setFragment).commit();
+                        .add(R.id.secondSetContainer, setFragment2).commit();
                 break;
             case 2:
                 Log.d(TAG, "setEntered: case2");
                 thirdContainer.setVisibility(View.VISIBLE);
-                SetFragment setFragment2 = new SetFragment();
-                setFragment2.setNewSetListener(newSetListener);
+                setFragment3.setNewSetListener(newSetListener);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(R.id.thirdSetContainer, setFragment2).commit();
+                        .add(R.id.thirdSetContainer, setFragment3).commit();
                 break;
             case 3:
                 Log.d(TAG, "setEntered: case 3");
                 fourthContainer.setVisibility(View.VISIBLE);
-                SetFragment setFragment3 = new SetFragment();
-                setFragment3.setNewSetListener(newSetListener);
+                setFragment4.setNewSetListener(newSetListener);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fourthSetContainer, setFragment3).commit();
+                        .add(R.id.fourthSetContainer, setFragment4).commit();
                 break;
             default:
                 Log.d(TAG, "setEntered: error");
