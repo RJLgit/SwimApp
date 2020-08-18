@@ -169,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements ShareFragment.New
 
     @Override
     public void addSession(String set1, String set2, String set3, String set4) {
-        
+        Sessions mySession = new Sessions(set1, set2, set3, set4, user.getDisplayName());
+
     }
 }
