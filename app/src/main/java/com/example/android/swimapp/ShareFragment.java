@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 
 public class ShareFragment extends Fragment {
@@ -18,6 +20,7 @@ public class ShareFragment extends Fragment {
     FrameLayout secondContainer;
     FrameLayout thirdContainer;
     FrameLayout fourthContainer;
+    Button submitButton;
 
 
     public ShareFragment() {
@@ -35,7 +38,14 @@ public class ShareFragment extends Fragment {
         secondContainer = view.findViewById(R.id.secondSetContainer);
         thirdContainer = view.findViewById(R.id.thirdSetContainer);
         fourthContainer = view.findViewById(R.id.fourthSetContainer);
+        submitButton = view.findViewById(R.id.addSessionButton);
 
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Button clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         SetFragment setFragment = new SetFragment();
         setFragment.setNewSetListener(newSetListener);
